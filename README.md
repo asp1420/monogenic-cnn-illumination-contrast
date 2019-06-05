@@ -11,7 +11,7 @@ The dataset is available in the public bucket:
  *  gs://um-bucket-2019/cifar_haze_levels_32_june_2019/
  *  gs://um-bucket-2019/cad_haze_levels_224_june_2019/
  
-In order to download the data it the [`gsutil tool`](https://cloud.google.com/storage/docs/gsutil) will be required.
+In order to download the dataset the [`gsutil tool`](https://cloud.google.com/storage/docs/gsutil) will be required.
 
 You can download the dataset as follows:
  
