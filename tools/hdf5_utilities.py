@@ -1,6 +1,21 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+__author__ = ["E. Ulises Moya", " Sebastian Salazar-Colores", "Abraham Sanchez", "Sebastian Xambò", "Ulises Cortes" ]
+__copyright__ = "Copyright 2019, Gobierno de Jalisco"
+__credits__ = ["E. Ulises Moya"]
+__license__ = "MIT"
+__version__ = "0.0.1"
+__maintainer__ = ["E. Ulises Moya", "Abraham Sanchez"]
+__email__ = "eduardo.moya@jalisco.gob.mx"
+__status__ = "Development"
+
+
 import sys,cv2,os,h5py,csv,time,numpy as np
 from pandas import read_csv
 from matplotlib import pyplot as plt
+
+
 
 def save_HDF5(x,y,path):
     start = time.clock() 
@@ -17,8 +32,9 @@ def save_HDF5(x,y,path):
     elapsed = time.clock()
     elapsed = elapsed - start
     print ("The data was saved succesfully in: ",full_path,"using: ", round(elapsed,2),' seconds')
-    
-    
+
+
+
 def load_HDF5(full_path):
     start = time.clock() 
     print('Loading data from',full_path,'...', end='')
@@ -31,6 +47,8 @@ def load_HDF5(full_path):
     print ("finished using: ", round(elapsed,2), " seconds")
     return x,y
 
+
+
 def obtain_data_from_images_and_csv(path_dataset,path_csv):
     start = time.clock() 
     names = sorted(os.listdir(path_dataset));
@@ -40,7 +58,6 @@ def obtain_data_from_images_and_csv(path_dataset,path_csv):
     except  ValueError:
         m,n=cv2.imread(path_dataset+names[0],cv2.IMREAD_UNCHANGED).shape;
         c=0
-#    x=np.zeros((len(names),m*n*c))
     x=[]
     i=0
     for i in range(0,len(names)):
@@ -48,7 +65,6 @@ def obtain_data_from_images_and_csv(path_dataset,path_csv):
         if c==3:
             tmp_img = cv2.cvtColor(tmp_img, cv2.COLOR_BGR2RGB)
         x.append(tmp_img)
-#        x[i]=tmp_img.flatten()
         i=i+1
         percent = float(i) / len(names)
         hashes = '#' * int(round(percent * 20))
@@ -60,6 +76,8 @@ def obtain_data_from_images_and_csv(path_dataset,path_csv):
     print ("\tfinished in: ", round(elapsed,2), " seconds")
     return x,y
 
+
+
 def combine_hdf5(path_h5_1,path_h5_2,path_res):
     x1,y1=load_HDF5(path_h5_1)
     x2,y2=load_HDF5(path_h5_2)
@@ -69,6 +87,8 @@ def combine_hdf5(path_h5_1,path_h5_2,path_res):
         x2=x2[:, :, :,np.newaxis]
         x3=np.concatenate((x1,x2), axis=3)
     save_HDF5(x3,y1,path_res)
+
+
 
 def save_images_and_csv_from_data(x,y,path_x,path_y):
     start = time.clock() 
@@ -92,31 +112,4 @@ def save_images_and_csv_from_data(x,y,path_x,path_y):
     elapsed = time.clock()
     elapsed = elapsed - start
     print ("\tfinished using: ", round(elapsed,2), " seconds")
-    
-#def create_rgbd_images(path_rgb,path_depth,path_res):
-#    
-        
-
-    
-    
-    
-if __name__=='__main__':
-#    x,y=obtain_data_from_images_and_csv('D:/Dehazing monogenic/data/cifar_depth_dc/','D:/Dehazing monogenic/data/label.csv')    
-#    save_HDF5(x,y,'D:/Dehazing monogenic/data/cifar_depth_dc')
-    x1,y1=load_HDF5('D:/Dehazing monogenic/data/cifar_rgb_3-32-32.h5')
-#    print(y1[1])
-#    plt.imshow(x1[1])
-#    plt.show()
-#    x2,y2=load_HDF5('D:/Dehazing monogenic/data/cifar_dehaze_dc_3-32-32.h5')
-#    print(y2[1])
-#    plt.imshow(x2[1])
-#    plt.show()
-#    x3,y3=load_HDF5('D:/Dehazing monogenic/data/cifar_dehaze_dl_3-32-32.h5')
-#    print(y3[1])
-#    plt.imshow(x3[1])
-#    plt.show()
-#    combine_hdf5('D:/Dehazing monogenic/data/cifar_monogenic_dehaze_dl_3-32-32.h5','D:/Dehazing monogenic/data/cifar_dehaze_dl_3-32-32.h5','D:/Dehazing monogenic/data/cifar_dehaze_Dl_and_monogenic')
-###    save_images_and_csv_from_data(x,y,'d2/','d/label.csv')
-##    
-
 
