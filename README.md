@@ -41,7 +41,16 @@ Randomly degraded versions of the images in Figure 5: (a) From CIFAR-10; (b) Fro
 
 ![](images/oneimagedegradation.png?raw=true)
 
-(a) Original image, level 0; (b) contrast level 1; (c) contrast level 2; (d) contrast level 3.
+From left to right the different levels of atmospheric degradation are shown.
  
-## Usage
-(TODO)
+## Scripts
+There are 6 different scripts in the [models](models) folder from which the results of this work were obtained.
+
+**Important**: for a correct execution of the scripts these require two files, [hdf5_utilities.py](tools/hdf5_utilities.py) and [monogenic_functions.py](tools/monogenic_functions.py). Both are available in the [tools](tools) folder. These files must be in the same directory of each model below. Our recommendation is just to copy-paste these files into the directory of the model to be tested.
+
+1. [CIFAR-10 No Monogenic](models/cifar_models/cifar_rgb_haze.py). Training and validation by using CIFAR-10 dataset with atmospheric degradation without applying monogenic wavelets.
+2. [CIFAR-10 Monogenic](models/cifar_models/cifar_rgb_haze_monogenic.py). Training and validation by using CIFAR-10 dataset with atmospheric degradation and monogenic wavelets.
+3. [Dogs and Cats No Monogenic](models/cads_models/cads_rgb_haze.py). Training and validation by using Dogs and Cats dataset with atmospheric degradation without applying monogenic wavelets.
+4. [Dogs and Cats Monogenic](models/cads_models/cads_rgb_haze_monogenic.py). Training and validation by using Dogs and Cats dataset with atmospheric degradation and monogenic wavelets.
+5. [CIFAR-10 No Monogenic and Resnet V2](models/cifar_resnet20_models/cifar_rgb_haze_resnet.py). Training and validation by using CIFAR-10 dataset model with atmospheric degradation without applying monogenic wavelets. ResNet V2 model is used.
+6. [CIFAR-10 Monogenic and Resnet V2](models/cifar_models/cifar_rgb_haze_monogenic.py). Training and validation by using CIFAR-10 dataset with atmospheric degradation and monogenic wavelets. ResNet V2 model is used.
