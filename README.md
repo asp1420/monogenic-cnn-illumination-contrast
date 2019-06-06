@@ -54,3 +54,29 @@ There are 6 different scripts in the [models](models) folder from which the resu
 4. [Dogs and Cats Monogenic](models/cads_models/cads_rgb_haze_monogenic.py). Training and validation by using Dogs and Cats dataset with atmospheric degradation and monogenic wavelets.
 5. [CIFAR-10 No Monogenic and Resnet V2](models/cifar_resnet20_models/cifar_rgb_haze_resnet.py). Training and validation by using CIFAR-10 dataset model with atmospheric degradation without applying monogenic wavelets. ResNet V2 model is used.
 6. [CIFAR-10 Monogenic and Resnet V2](models/cifar_models/cifar_rgb_haze_monogenic.py). Training and validation by using CIFAR-10 dataset with atmospheric degradation and monogenic wavelets. ResNet V2 model is used.
+
+## Usage
+For a correct execution we recommend the following tree structure:
+
+```
+/                                [Directory]
+  cifar_rgb_haze.py              [File]
+  hdf5_utilities.py              [File]
+  monogenic_functions.py         [File]
+  data/                          [Directory]
+       cifar_haze_0_3-32-32.h5   [File]
+```
+
+In order to test the models you need to give some parameters:
+
+ * Job ID (Integer number, i.e 1)
+ * Epochs (Integer number, i.e 100)
+ * Batch size (Integer number, i.e 32)
+ * Learning rate (Float, i.e 0.0001)
+
+For example:
+```
+> cifar_rgb_haze.py 1 100 32 0.0001
+```
+
+The results will be stored in an auto generated folder called *job_out*.
