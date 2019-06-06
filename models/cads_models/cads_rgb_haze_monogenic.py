@@ -23,7 +23,6 @@ from keras.callbacks import ModelCheckpoint,History
 from keras.utils import plot_model,multi_gpu_model
 from sklearn.metrics import confusion_matrix
 from monogenic_functions import comp_ph_ori_fr_ones_rgb_list
-#from generateQuaternionGImage import qph9_list
 from keras.models import Model,Sequential
 from keras import backend as K,optimizers
 from keras.utils import multi_gpu_model
